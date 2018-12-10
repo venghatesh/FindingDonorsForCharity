@@ -14,3 +14,12 @@ our goal will be to
     Evaluate several supervised learners of our choice on the data, and consider which is best suited for the solution. 
     Optimize the model we've selected and present it as your solution to CharityML. 
     Explore the chosen model and its predictions under the hood, to see just how well it's performing when considering the data it's           given.
+
+Software and Libraries
+This project uses the following software and Python libraries:
+    Python
+    NumPy
+    pandas
+    scikit-learn (v0.17)
+    matplotlib
+    seaborn
