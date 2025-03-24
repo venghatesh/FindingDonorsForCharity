@@ -1,0 +1,65 @@
+Data Mining 
+Image Processing: Fake Currency
+Detection
+DONE BY: SHREYA VENGHATESH 
+         BTECH 2ND YEAR
+1.Type of Data Chosen
+The primary data type used in this project is image data.
+The dataset consists of high-resolution images of genuine and counterfeit currency notes.
+These images are collected using scanners or high-quality cameras and are stored in standard
+formats like JPEG, PNG, or TIFF.
+The dataset should be diverse, covering different denominations, lighting conditions, angles,
+and possible variations in fake notes.
+2.Fundamental Technical Components Based on Image Data:
+To effectively process and analyze currency images, the following key technical components are
+involved:
+Image Acquisition – Capturing high-quality images using scanners or cameras.
+Preprocessing – Removing noise, adjusting contrast, and normalizing the images for consistent
+analysis.
+Feature Extraction – Identifying distinct features such as texture, color patterns, watermark
+presence, micro-lettering, and security threads.
+Edge Detection – Using techniques like Sobel, Canny, or Prewitt filters to highlight edges and
+contours of security features.
+Segmentation – Separating different regions of the note, such as holograms, watermarks, and
+numerical sections, for detailed analysis.
+Pattern Recognition – Analyzing extracted features to distinguish genuine notes from fake ones.
+3.Application: Fake Currency Detection
+Fake currency detection is a crucial application of image processing in financial security. This
+system is designed to assist banks, businesses, and law enforcement agencies in verifying the
+authenticity of currency notes. By utilizing image analysis techniques, the system can identify
+counterfeit notes based on predefined features without relying on machine learning or natural
+language processing.
+4.Problems of Using Image Processing for Fake Currency Detection
+Despite its advantages, image processing for fake currency detection has several challenges:
+Variability in Fake Notes – Counterfeiters continuously improve their methods, making it harder
+to rely on fixed feature sets.
+Lighting and Image Quality Issues – Variations in lighting, camera quality, and angle can affect
+accuracy.
+Wear and Tear of Notes – Genuine notes may appear damaged, causing misclassification.
+High Computational Requirements – Processing high-resolution images requires significant
+computational power.
+Feature Similarity – Some fake notes closely resemble real ones, making it challenging to
+distinguish them based on visual analysis alone.
+5.Steps to Solve the Problem Using Algorithms (Without Machine Learning or NLP)
+The following algorithmic steps can be implemented for fake currency detection:
+Image Acquisition: Capture currency images using high-resolution cameras or scanners.
+Preprocessing:
+Convert the image to grayscale for uniform processing.
+Apply histogram equalization to enhance contrast.
+Use Gaussian or median filtering to remove noise.
+Edge Detection:
+Apply the Canny edge detection algorithm to highlight sharp edges.
+Detect watermark and security thread regions by analyzing edge patterns.
+Segmentation:
+Use thresholding techniques like Otsu’s method to segment regions of interest.
+Identify key areas such as portraits, holograms, and serial numbers.
+Feature Extraction:
+Extract texture features using Gabor filters or Local Binary Patterns (LBP).
+Analyze color consistency using color histograms.
+Detect micro-lettering using morphological operations.
+Pattern Matching:
+Compare extracted features with a stored database of genuine currency features.
+Use correlation-based analysis to detect inconsistencies.
+Decision Rule:
+Define threshold values for genuine and fake classification.
+If feature deviations exceed predefined limits, mark the note as counterfeit.
