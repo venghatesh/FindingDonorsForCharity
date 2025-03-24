@@ -1,0 +1,161 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+//team members
+//Nihma Naser Reg no:23011101086
+//Likitha Palapati Reg no: 23011101091
+// V Shreya Reg no: 23011101154
+
+// Book class to store book details
+class Book {
+    private String title;
+    private String author;
+    private int id;
+    private boolean isAvailable;
+
+    public Book(int id, String title, String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.isAvailable = true;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void borrow() {
+        isAvailable = false;
+    }
+
+    public void returnBook() {
+        isAvailable = true;
+    }
+}
+
+// User class to store user details
+class User {
+    private String name;
+    private int userId;
+
+    public User(int userId, String name) {
+        this.userId = userId;
+        this.name = name;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+// Library class to manage books and user actions
+class Library {
+    private List<Book> books;
+    private List<Integer> borrowedBookIds;
+
+    public Library() {
+        books = new ArrayList<>();
+        borrowedBookIds = new ArrayList<>();
+    }
+
+    public void addBook(Book book) {
+        books.add(book);
+    }
+
+    public void showBooks() {
+        System.out.println("Available Books:");
+        for (Book book : books) {
+            if (book.isAvailable()) {
+                System.out.println("ID: " + book.getId() + ", Title: " + book.getTitle() + ", Author: " + book.getAuthor());
+            }
+        }
+    }
+
+    public void borrowBook(int bookId) {
+        for (Book book : books) {
+            if (book.getId() == bookId && book.isAvailable()) {
+                book.borrow();
+                borrowedBookIds.add(bookId);
+                System.out.println("Book borrowed successfully.");
+                return;
+            }
+        }
+        System.out.println("Book not available or doesn't exist.");
+    }
+
+    public void returnBook(int bookId) {
+        for (Book book : books) {
+            if (book.getId() == bookId && !book.isAvailable()) {
+                book.returnBook();
+                borrowedBookIds.remove(Integer.valueOf(bookId));
+                System.out.println("Book returned successfully.");
+                return;
+            }
+        }
+        System.out.println("Book is not currently borrowed.");
+    }
+}
+
+// Main class to run the library management system
+public class LibraryManagementSystem {
+    public static void main(String[] args) {
+        Library library = new Library();
+        Scanner sc = new Scanner(System.in);
+
+        // Adding some books to the library
+        library.addBook(new Book(1, "The Adventures of Huckelberry Finn", "Mark Twain"));
+        library.addBook(new Book(2, "The Merchant of Venice", "William shakesphere"));
+        library.addBook(new Book(3, "Othello", "William shakesphere"));
+
+        // Sample interaction
+        while (true) {
+            System.out.println("\nLibrary Management System");
+            System.out.println("1. Show Available Books");
+            System.out.println("2. Borrow Book");
+            System.out.println("3. Return Book");
+            System.out.println("4. Exit");
+            System.out.print("Choose an option: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    library.showBooks();
+                    break;
+                case 2:
+                    System.out.print("Enter Book ID to borrow: ");
+                    int borrowId = sc.nextInt();
+                    library.borrowBook(borrowId);
+                    break;
+                case 3:
+                    System.out.print("Enter Book ID to return: ");
+                    int returnId = sc.nextInt();
+                    library.returnBook(returnId);
+                    break;
+                case 4:
+                    System.out.println("Exiting the system.");
+                    sc.close();
+                    return;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+    }
+}
